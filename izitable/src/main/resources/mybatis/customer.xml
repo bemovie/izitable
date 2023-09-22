@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="customer"> 
+	
+	<select id="list" resultType="Customer">
+		SELECT * FROM customer
+	</select>
+	
+	<select id="total" resultType="Integer">
+		SELECT COUNT(*) FROM customer
+	</select>
+	
+	<update id="update">
+		UPDATE customer
+		SET cust_name = #{custName}, cust_phone = #{custPhone}, cache = #{cache}
+		WHERE cust_code = #{custCode}
+	</update>
+	
+	<delete id="delete">
+		DELETE FROM customer
+		WHERE cust_code = #{custCode}
+	</delete>
+	
+	<insert id="add">
+		INSERT INTO customer
+		VALUES ( #{custCode}, #{custPhone}, #{custPassword}, #{custName} )
+	</insert>
+
+</mapper>
