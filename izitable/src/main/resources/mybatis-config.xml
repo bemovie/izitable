@@ -8,7 +8,7 @@
 	</settings>
 
 	<typeAliases>
-		<typeAlias type="kr.co.eztable.model.Customer" alias="Customer"/>
+		<typeAlias type="com.izitable.model.Customer" alias="Customer"/>
 	</typeAliases>
 	
 	<mappers>

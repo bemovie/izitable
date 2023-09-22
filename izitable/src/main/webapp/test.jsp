@@ -168,7 +168,7 @@ function displayMarker(place) {
         /*
     	// 마커를 클릭하면 장소명이 인포윈도우에 표출됩니다
         infowindow.setContent(
-       		'<div style="padding:5px;font-size:12px;">' + place.place_name + '</div><br><div style="padding:5px;font-size:12px;">' + place.road_address_name + place.phone + '</div><br><div style="padding:5px;font-size:12px;">' + place.phone + '</div>'
+       		'<div style="padding:5px;font-size:12px;">' + place.place_name + '</div><br><div style="padding:5px;font-size:12px;">' + place.road_address_name + '</div><br><div style="padding:5px;font-size:12px;">' + place.phone + '</div>'
         );
         infowindow.open(map, marker);
         */
@@ -196,7 +196,7 @@ function setMarkers(map) {
 
 
 
-
+<!-- 모달 -->
 <script>
 //const modalOpenButton = document.getElementById('modalOpenButton');
 const modalCloseButton = document.getElementById('modalCloseButton');
@@ -211,12 +211,9 @@ modalOpenButton.addEventListener('click', () => {
 modalCloseButton.addEventListener('click', () => {
   modal.classList.add('hidden');
 });
-
-
-
-
-
 </script>
+
+
 
 </body>
 </html>
