@@ -183,7 +183,7 @@ for (var i = 0; i < positions.length; i ++) {
     	fetch(`item/${item.shopCode}`, {
             method: "GET",
         });
-    	alert("매장번호" + ${item.shopCode});
+    	alert("매장번호dddd" + ${item.shopCode});
     });
     
 }
