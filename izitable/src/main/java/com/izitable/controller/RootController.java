@@ -25,7 +25,7 @@ public class RootController {
 			session.removeAttribute("msg");
 		}
 		
-		return "index";
+		return "shop/list";
 	}
 	
 	@GetMapping("/login")
@@ -34,17 +34,16 @@ public class RootController {
 	}
 	
 	@PostMapping("/login")
-	String login(/*String custid, String password,*/ Customer item, HttpSession session/*, Model model*/) {
+	String login(Customer item, HttpSession session) {
 		Boolean result = customerService.login(item); //return값을 true, false로 받기 위해 Boolean으로 result 받음
 		
 		if(result) { //result가 true면 로그인 되었다 => session에 사용자 정보를 저장			
 			session.setAttribute("msg", "환영합니다");
-			session.setAttribute("member", /*result*/item); //result가 Boolean 타입이므로, item을 받아야 Customer 정보가 담아짐,
+			session.setAttribute("customer", item); //result가 Boolean 타입이므로, item을 받아야 Customer 정보가 담아짐,
 		}
 		
 		else {
 			session.setAttribute("msg", "로그인에 실패하였습니다");
-//			model.addAttribute("message", "로그인 정보가 틀렸습니다");
 		}
 		return "redirect:/";
 	}

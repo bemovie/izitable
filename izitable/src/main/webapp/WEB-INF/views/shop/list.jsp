@@ -4,8 +4,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <title>키워드로 장소검색하기</title>
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover" />
+<link rel="stylesheet" type="text/css" href="../../../resources/css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="../../../resources/fonts/bootstrap-icons.css">
+<link rel="stylesheet" type="text/css" href="../../../resources/css/style.css">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<meta id="theme-check" name="theme-color" content="#FFFFFF">
+<link rel="apple-touch-icon" sizes="180x180" href="app/icons/icon-192x192.png">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" integrity="sha512-uto9mlQzrs59VwILcLiRYeLKPPbS/bT71da/OEBYEwcdNUk8jYIy+D176RYoop1Da+f9mvkYrmj5MCLZWEtQuA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" integrity="sha512-aOG0c6nPNzGk+5zjwyJaoRUgCdOrfSDhmMID2u4+OIslr0GjpLKo7Xm0Ao3xmpM4T8AmIouRkqwj1nrdVsLKEQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<script src="../../../resources/js/bootstrap.min.js"></script>
+<script src="../../../resources/js/custom.js"></script>
+
+<meta charset="utf-8">
+<title>키워드로 장소검색하기</title>
 
 <style>
 
@@ -16,8 +35,8 @@
   z-index: 1;
   left: 0;
   top: 0;
-  width: 400px;
-  height: 400px;
+  width: 500px;
+  height: 1000px;
   overflow: auto;
   /* background-color: rgba(0, 0, 0, 0.7); */
 }
@@ -44,6 +63,7 @@
   text-decoration: none;
   cursor: pointer;
 }
+
 </style>
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=3deea4e437afacaccf5d342a0a21b891&libraries=services"></script>
@@ -78,12 +98,14 @@ navigator.geolocation.getCurrentPosition(locationLoadSuccess,locationLoadError);
 </script>
 <!-- <script src="../resources/js/map.js"></script> -->   
 
-
+<jsp:include page="../nav.jsp"></jsp:include>
 
 </head>
 <body>
 
-<form method="post">
+<!-- <h3>쉽고 빠른 식당 예약 서비스</h3> -->
+
+<form method="post" action="/shop/list">
 <select id="city" name="city">
 	<option value="서울">서울</option>
 	<option value="대전">대전</option>
@@ -171,6 +193,11 @@ for (var i = 0; i < positions.length; i ++) {
     	fetch(`item/${item.shopCode}`, {
             method: "GET",
         });
+    	document.getElementById('sn').innerHTML = `${item.shopName}`;
+    	document.getElementById('sa').innerHTML = `${item.shopAddress}`;
+    	document.getElementById('sp').innerHTML = `${item.shopPhone}`;
+    	document.getElementById('res').innerHTML = `<a href="${pageContext.request.contextPath}/res/${item.shopCode}">예약하기</a>`;
+
     	alert("매장번호" + ${item.shopCode});
     });
     
@@ -181,22 +208,133 @@ for (var i = 0; i < positions.length; i ++) {
 </c:forEach>
 
 
-
+<!-- <script language="JavaScript"> window.name = "Test_Dialog"; </script>
+<a href="http://www.egocube.pe.kr/" target="Test_Dialog">Click!</a> -->
 
 
 <div id="myModal" class="modal">
 	<div class="modal-content">
 		<span class="close">&times;</span>
-		<div>
-		${info.shopName}
+		<div id="sn">
 		</div>
-		<div>
-		${info.shopAddress}
+		<div id="sa">
 		</div>
-		<div>
-		ddd
+		<div id="sp">
 		</div>
+		
+		<form>
+		<div class="accordion border-0 accordion-s" id="accordion-group-6">
+
+                    <div class="accordion-item">
+                        <button class="accordion-button collapsed px-0" type="button" data-bs-toggle="collapse" data-bs-target="#accordion6-1">
+                            <!-- <span class="font-600 font-13">예약 날짜 선택</span> -->
+                            <input class="font-600 font-13 datepicker" value="예약 날짜 선택">
+                            <i class="bi bi-chevron-down font-20"></i>
+                        </button>
+                        <div id="accordion6-1" class="accordion-collapse collapse" data-bs-parent="#accordion-group-6">
+                            <p class="pb-3 opacity-60">
+
+                                <!-- <input class="datepicker"> -->
+                                <script>
+                                $(function(){
+                                    $('.datepicker').datepicker();
+                                })
+                                </script>
+
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <button class="accordion-button collapsed px-0" type="button" data-bs-toggle="collapse" data-bs-target="#accordion6-2">
+                            <input id="resHour" class="font-600 font-13" value="예약 시간 선택">
+                            <i class="bi bi-chevron-down font-20"></i>
+                        </button>
+                        <div id="accordion6-2" class="accordion-collapse collapse" data-bs-parent="#accordion-group-6">
+                        	<script>
+                        	function resHour( item ) {
+                        		document.querySelector('#resHour').value = $(item).text();
+                        	}
+                        	</script>
+                        
+                            <div class="mb-2 pb-2"></div>
+                                <a href="#" class="btn btn-l gradient-orange" style="width:100px; margin: 0 auto;" onclick="resHour(this)">11:00</a>
+                                <a href="#" class="btn btn-l gradient-orange" style="width:100px; margin: 0 auto;" onclick="resHour(this)">12:00</a>
+                                <a href="#" class="btn btn-l gradient-orange" style="width:100px; margin: 0 auto;" onclick="resHour(this)">13:00</a>
+                                <a href="#" class="btn btn-l gradient-orange" style="width:100px; margin: 0 auto;" onclick="resHour(this)">14:00</a>
+                                <a href="#" class="btn btn-l gradient-orange" style="width:100px; margin: 0 auto;" onclick="resHour(this)">17:00</a>
+                                <a href="#" class="btn btn-l gradient-orange" style="width:100px; margin: 0 auto;" onclick="resHour(this)">18:00</a>
+                                <a href="#" class="btn btn-l gradient-orange" style="width:100px; margin: 0 auto;" onclick="resHour(this)">19:00</a>
+                                <a href="#" class="btn btn-l gradient-orange" style="width:100px; margin: 0 auto;" onclick="resHour(this)">20:00</a>
+                                <a href="#" class="btn btn-l gradient-orange" style="width:100px; margin: 0 auto;" onclick="resHour(this)">21:00</a>
+                            <div class="mb-2"></div> 
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <button class="accordion-button collapsed px-0" type="button" data-bs-toggle="collapse" data-bs-target="#accordion6-3">
+                            <input id="tit_nop" class="font-600 font-13" value="예약 인원 선택">
+                            <i class="bi bi-chevron-down font-20"></i>
+                        </button>
+                        <div id="accordion6-3" class="accordion-collapse collapse" data-bs-parent="#accordion-group-6">
+                            <p class="pb-3 opacity-60">
+                            1~10명까지 선택 가능합니다.<br>
+                            방문하시는 인원을 선택하세요.
+                            </p>
+
+                            <div class="row">
+                                <div class="col-6"  style="margin: 0 auto;">
+                                    <div class="stepper rounded-s">
+                                    	<script>
+                                    	function count(type) {
+                                    		let nop = document.querySelector('#nop').value;
+                                    		
+                                    		if(type === 'plus') {
+                                    			nop = parseInt(nop) + 1;
+                                    			if (nop > 10) {
+                                    				return false;
+                                    			}
+                                    		}
+                                    		else if(type === 'minus')  {
+                                    			nop = parseInt(nop) - 1;
+                                    			if (nop < 1) {
+                                    				return false;
+                                    			}
+                                    		}
+                                    		document.querySelector('#nop').value = nop;
+                                    		document.querySelector('#tit_nop').value = nop;
+										}
+                                    	
+                                    	function plus() {
+                                    		//document.querySelector('#nop').value += 1;
+                                    		//var nop = document.querySelector('#nop').value                                    		
+                                    		//console.log(typeof(Number(nop)));
+                                    		//console.log(Number(nop));
+                                    		//Number(nop) = Number(nop) + 1;
+										}
+                                    	</script>
+                                        <a href="#"><i class="bi bi-dash font-18 color-red-dark" onclick="count('minus')"></i></a>
+                                        <input type="number" id="nop" class="color-theme" min="1" max="10" value="1">
+                                        <a href="#"><i class="bi bi-plus font-18 color-green-dark" onclick="count('plus')"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+
+                    </div>
+                </div>
+		
+		<div>
+			<button type="submit" id="res"></button>
+		</div>
+		</form>
+		
 	</div>
+</div>
+
+<div>
+${info.shopCode}
 </div>
 
 
