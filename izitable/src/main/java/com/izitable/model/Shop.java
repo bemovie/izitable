@@ -3,7 +3,7 @@ package com.izitable.model;
 import java.util.Date;
 
 public class Shop {
-	private String shopCode;
+	private int shopCode;
 	private String shopName;
 	private String category;
 	private String shopAddress;
@@ -60,10 +60,10 @@ public class Shop {
 	public void setShopRegDate(Date shopRegDate) {
 		ShopRegDate = shopRegDate;
 	}
-	public String getShopCode() {
+	public int getShopCode() {
 		return shopCode;
 	}
-	public void setShopCode(String shopCode) {
+	public void setShopCode(int shopCode) {
 		this.shopCode = shopCode;
 	}
 	public String getShopName() {

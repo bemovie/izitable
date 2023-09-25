@@ -31,7 +31,7 @@ public class CustomerDaoImpl implements CustomerDao {
 	}
 
 	@Override
-	public void delete(String custCode) {
+	public void delete(int custCode) {
 		sql.delete("customer.delete", custCode);
 	}
 

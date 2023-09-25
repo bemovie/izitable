@@ -43,7 +43,7 @@ public class CustomerController {
 	}
 	
 	@PostMapping("/update/{custCode}")
-	String update(@PathVariable String custCode, Customer item) {
+	String update(@PathVariable int custCode, Customer item) {
 		item.setCustCode(custCode);
 		
 		service.update(item);
@@ -53,7 +53,7 @@ public class CustomerController {
 	
 	
 	@GetMapping("/delete/{custCode}")
-	String delete(@PathVariable String custCode) {
+	String delete(@PathVariable int custCode) {
 		service.delete(custCode);
 		
 		return "redirect:../list";

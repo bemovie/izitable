@@ -3,7 +3,7 @@ package com.izitable.model;
 import java.util.Date;
 
 public class Customer {
-	private String custCode;
+	private int custCode;
 	private String custPhone;
 	private String custPassword;
 	private String custName;
@@ -16,11 +16,11 @@ public class Customer {
 	public void setCustRegDate(Date custRegDate) {
 		this.custRegDate = custRegDate;
 	}
-	public String getCustCode() {
+	public int getCustCode() {
 		return custCode;
 	}
-	public void setCustCode(String custCode) {
-		this.custCode = custCode;
+	public void setCustCode(int custCode2) {
+		this.custCode = custCode2;
 	}
 	public String getCustPhone() {
 		return custPhone;

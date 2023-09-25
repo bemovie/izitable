@@ -258,15 +258,15 @@ for (var i = 0; i < positions.length; i ++) {
                         	</script>
                         
                             <div class="mb-2 pb-2"></div>
-                                <a href="#" class="btn btn-l gradient-orange" style="width:100px; margin: 0 auto;" onclick="resHour(this)">11:00</a>
-                                <a href="#" class="btn btn-l gradient-orange" style="width:100px; margin: 0 auto;" onclick="resHour(this)">12:00</a>
-                                <a href="#" class="btn btn-l gradient-orange" style="width:100px; margin: 0 auto;" onclick="resHour(this)">13:00</a>
-                                <a href="#" class="btn btn-l gradient-orange" style="width:100px; margin: 0 auto;" onclick="resHour(this)">14:00</a>
-                                <a href="#" class="btn btn-l gradient-orange" style="width:100px; margin: 0 auto;" onclick="resHour(this)">17:00</a>
-                                <a href="#" class="btn btn-l gradient-orange" style="width:100px; margin: 0 auto;" onclick="resHour(this)">18:00</a>
-                                <a href="#" class="btn btn-l gradient-orange" style="width:100px; margin: 0 auto;" onclick="resHour(this)">19:00</a>
-                                <a href="#" class="btn btn-l gradient-orange" style="width:100px; margin: 0 auto;" onclick="resHour(this)">20:00</a>
-                                <a href="#" class="btn btn-l gradient-orange" style="width:100px; margin: 0 auto;" onclick="resHour(this)">21:00</a>
+                                <a href="#" class="btn btn-xxs gradient-orange" style="width:100px; margin: 0 auto;" onclick="resHour(this)">11:00</a>
+                                <a href="#" class="btn btn-xxs gradient-orange" style="width:100px; margin: 0 auto;" onclick="resHour(this)">12:00</a>
+                                <a href="#" class="btn btn-xxs gradient-orange" style="width:100px; margin: 0 auto;" onclick="resHour(this)">13:00</a>
+                                <a href="#" class="btn btn-xxs gradient-orange" style="width:100px; margin: 0 auto;" onclick="resHour(this)">14:00</a>
+                                <a href="#" class="btn btn-xxs gradient-orange" style="width:100px; margin: 0 auto;" onclick="resHour(this)">17:00</a>
+                                <a href="#" class="btn btn-xxs gradient-orange" style="width:100px; margin: 0 auto;" onclick="resHour(this)">18:00</a>
+                                <a href="#" class="btn btn-xxs gradient-orange" style="width:100px; margin: 0 auto;" onclick="resHour(this)">19:00</a>
+                                <a href="#" class="btn btn-xxs gradient-orange" style="width:100px; margin: 0 auto;" onclick="resHour(this)">20:00</a>
+                                <a href="#" class="btn btn-xxs gradient-orange" style="width:100px; margin: 0 auto;" onclick="resHour(this)">21:00</a>
                             <div class="mb-2"></div> 
                         </div>
                     </div>

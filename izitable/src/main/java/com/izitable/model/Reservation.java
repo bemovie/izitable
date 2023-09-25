@@ -3,23 +3,30 @@ package com.izitable.model;
 import java.util.Date;
 
 public class Reservation {
-	
-	private String custCode;
-	private String shopCode;
+		
+	private int resCode;
+	private int custCode;
+	private int shopCode;
 	private Date resDate;
 	private Date resTime;
 	private int resNop;
 	
-	public String getCustCode() {
+	public int getResCode() {
+		return resCode;
+	}
+	public void setResCode(int resCode) {
+		this.resCode = resCode;
+	}
+	public int getCustCode() {
 		return custCode;
 	}
-	public void setCustCode(String custCode) {
+	public void setCustCode(int custCode) {
 		this.custCode = custCode;
 	}
-	public String getShopCode() {
+	public int getShopCode() {
 		return shopCode;
 	}
-	public void setShopCode(String shopCode) {
+	public void setShopCode(int shopCode) {
 		this.shopCode = shopCode;
 	}
 	public Date getResDate() {
