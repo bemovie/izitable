@@ -2,6 +2,7 @@ package com.izitable.service;
 
 import java.util.List;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -39,6 +40,17 @@ public class CustomerServiceImpl implements CustomerService {
 		dao.add(item);
 	}
 
-
+	@Override
+	public Boolean login(Customer item) {
+		Customer result = dao.login(item);
+		
+		if (result != null) {
+			BeanUtils.copyProperties(result, item);
+			item.setCustPassword(null);
+			
+			return true;
+		}
+		return false;	
+	}
 
 }

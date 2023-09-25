@@ -17,4 +17,6 @@ public interface CustomerDao {
 
 	void add(Customer item);
 
+	Customer login(Customer item);
+
 }

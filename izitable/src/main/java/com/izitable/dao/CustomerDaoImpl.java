@@ -40,4 +40,9 @@ public class CustomerDaoImpl implements CustomerDao {
 		sql.insert("customer.add", item);
 	}
 
+	@Override
+	public Customer login(Customer item) {
+		return sql.selectOne("customer.login", item);
+	}
+
 }

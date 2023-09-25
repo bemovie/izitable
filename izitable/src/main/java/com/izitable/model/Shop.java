@@ -13,6 +13,46 @@ public class Shop {
 	private String shopIntro;
 	private String parking;
 	private Date ShopRegDate;
+	private double latitude;
+	private double longitude;
+	
+	
+	private String city;
+	private String gu;
+	private String dong;
+	
+	public String getCity() {
+		return city;
+	}
+	public void setCity(String city) {
+		this.city = city;
+	}
+	public String getGu() {
+		return gu;
+	}
+	public void setGu(String gu) {
+		this.gu = gu;
+	}
+	public String getDong() {
+		return dong;
+	}
+	public void setDong(String dong) {
+		this.dong = dong;
+	}
+	
+	
+	public double getLatitude() {
+		return latitude;
+	}
+	public void setLatitude(double latitude) {
+		this.latitude = latitude;
+	}
+	public double getLongitude() {
+		return longitude;
+	}
+	public void setLongitude(double longitude) {
+		this.longitude = longitude;
+	}
 	
 	public Date getShopRegDate() {
 		return ShopRegDate;

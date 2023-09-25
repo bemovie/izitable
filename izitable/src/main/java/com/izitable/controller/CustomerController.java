@@ -31,6 +31,17 @@ public class CustomerController {
 		return path + "list";
 	}
 	
+	@GetMapping("/add")
+	String add() {
+		return path + "add";
+	}
+	
+	@PostMapping("/add")
+	String add(Customer item) {
+		service.add(item);
+		return "redirect:list";
+	}
+	
 	@PostMapping("/update/{custCode}")
 	String update(@PathVariable String custCode, Customer item) {
 		item.setCustCode(custCode);
