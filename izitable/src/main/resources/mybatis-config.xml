@@ -8,15 +8,15 @@
 	</settings>
 
 	<typeAliases>
-		<typeAlias type="com.izitable.model.Customer" alias="Customer"/>
+		<typeAlias type="com.izitable.model.User" alias="User"/>
 		<typeAlias type="com.izitable.model.Shop" alias="Shop"/>
-		<typeAlias type="com.izitable.model.Reservation" alias="Reservation"/>
+		<typeAlias type="com.izitable.model.Booking" alias="Booking"/>
 	</typeAliases>
 	
 	<mappers>
-		<mapper resource="mybatis/customer.xml"/> <!-- 상대경로 -->
+		<mapper resource="mybatis/user.xml"/> <!-- 상대경로 -->
 		<mapper resource="mybatis/shop.xml"/> <!-- 상대경로 -->
-		<mapper resource="mybatis/reservation.xml"/> <!-- 상대경로 -->
+		<mapper resource="mybatis/booking.xml"/> <!-- 상대경로 -->
 	</mappers>
 	
 </configuration>

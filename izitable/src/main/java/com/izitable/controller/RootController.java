@@ -7,15 +7,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import com.izitable.model.Customer;
-import com.izitable.service.CustomerService;
+import com.izitable.model.User;
+import com.izitable.service.UserService;
 
 @Controller
 public class RootController {
 	
 	@Autowired
-	CustomerService customerService;
+	UserService userService;
 	
+	//메인 페이지
 	@GetMapping("/")
 	String index(HttpSession session, Model model) {
 		String msg = (String) session.getAttribute("msg");
@@ -28,18 +29,19 @@ public class RootController {
 		return "shop/list";
 	}
 	
+	//로그인
 	@GetMapping("/login")
 	String login() {
 		return "login";
 	}
 	
 	@PostMapping("/login")
-	String login(Customer item, HttpSession session) {
-		Boolean result = customerService.login(item); //return값을 true, false로 받기 위해 Boolean으로 result 받음
+	String login(User item, HttpSession session) {
+		Boolean result = userService.login(item); //return값을 true, false로 받기 위해 Boolean으로 result 받음
 		
 		if(result) { //result가 true면 로그인 되었다 => session에 사용자 정보를 저장			
 			session.setAttribute("msg", "환영합니다");
-			session.setAttribute("customer", item); //result가 Boolean 타입이므로, item을 받아야 Customer 정보가 담아짐,
+			session.setAttribute("user", item); //result가 Boolean 타입이므로, item을 받아야 Customer 정보가 담아짐,
 		}
 		
 		else {
@@ -48,6 +50,7 @@ public class RootController {
 		return "redirect:/";
 	}
 	
+	//로그아웃
 	@GetMapping("/logout")
 	String logout(HttpSession session) {
 		session.invalidate(); //session에 있는 정보 무효화 => 모든 정보가 없어짐
@@ -55,18 +58,18 @@ public class RootController {
 		return "redirect:/";
 	}
 	
+	//회원가입
 	@GetMapping("/join")
 	String signup() {
 		return "join";
 	}
 	
 	@PostMapping("/join")
-	String signup(Customer item) {
-		customerService.add(item);
+	String signup(User item) {
+		userService.add(item);
 		
 		return "redirect:.";
 	}
-	
 	
 	/*
 	@ResponseBody //viewResolver한테 줘서 jsp 파일을 찾지 말고, 그대로 client에 보여줘라,
@@ -78,6 +81,5 @@ public class RootController {
 			return "FAIL";
 	}
 	*/
-	
 	
 }

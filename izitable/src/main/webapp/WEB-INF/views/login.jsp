@@ -15,13 +15,13 @@
 		<div>
 		
 			<div class="form-group">
-				<label>전화번호:</label>
-				<input type="text" name="custPhone">
+				<label>이메일:</label>
+				<input type="text" name="userEmail">
 			</div>
 		
 			<div>
 				<label>비밀번호:</label>
-				<input type="password" name="custPassword">
+				<input type="password" name="userPwd">
 			</div>
 			
 			<div>

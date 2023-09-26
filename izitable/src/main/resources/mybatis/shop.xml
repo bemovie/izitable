@@ -5,15 +5,15 @@
 	
 	<select id="list" resultType="Shop">
 		SELECT * FROM tbl_shop
-		WHERE shop_address LIKE CONCAT('%', #{city}, '%')
-			AND shop_address LIKE CONCAT('%', #{gu}, '%')
-			AND shop_address LIKE CONCAT('%', #{dong}, '%')
-			AND category = #{category}
+		WHERE comp_addr1 LIKE CONCAT('%', #{si}, '%')
+			AND comp_addr1 LIKE CONCAT('%', #{gu}, '%')
+			AND comp_addr1 LIKE CONCAT('%', #{dong}, '%')
+			AND category_no = #{categoryNo}
 	</select>
 
 	<select id="item" resultType="Shop">
  		SELECT * FROM tbl_shop
- 		WHERE shop_code = #{shopCode}
+ 		WHERE no = #{shopNo}
  	</select>
 	
 </mapper>

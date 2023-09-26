@@ -8,6 +8,6 @@ public interface ShopService {
 
 	List<Shop> list(Shop shop);
 
-	Shop item(int shopCode);
+	Shop item(int shopNo);
 
 }

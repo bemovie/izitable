@@ -41,16 +41,16 @@
 </div>
 
 <div></div>
-<c:if test="${sessionScope.customer == null}"> <!-- session에 있는 정보 꺼내옴 -->
+<c:if test="${sessionScope.user == null}"> <!-- session에 있는 정보 꺼내옴 -->
 	<div id="login">
 		<a href="/login">로그인</a>
 		<a href="/join">회원가입</a>		
 	</div>
 </c:if>
-<c:if test="${sessionScope.customer != null}">
+<c:if test="${sessionScope.user != null}">
 	<div id="login">
 		<a href="/logout">로그아웃</a>
-		${sessionScope.customer.custName}
+		${sessionScope.user.userEmail}
 	</div>
 		
 </c:if>

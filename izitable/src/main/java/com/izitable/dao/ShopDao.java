@@ -8,6 +8,6 @@ public interface ShopDao {
 
 	List<Shop> list(Shop shop);
 
-	Shop list(int shopCode);
+	Shop list(int shopNo);
 
 }

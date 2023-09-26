@@ -1,9 +1,5 @@
 package com.izitable.controller;
 
-import java.util.List;
-
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,45 +8,39 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.izitable.model.Booking;
 import com.izitable.model.Shop;
+import com.izitable.service.BookingService;
 import com.izitable.service.ShopService;
 
 @Controller
-@RequestMapping("/shop")
-public class ShopController {
-	final String path = "shop/";
+@RequestMapping("/booking")
+public class BookingController {
+
+	final String path = "booking/";
 	
 	@Autowired
-	ShopService shopservice;
+	BookingService bookingservice;
 	
-	//매장 목록 (메인 페이지)
-	@GetMapping("/list")
-	String list() {
-		
-		return path + "list";
-	}
-	
-	//매장 목록 (필터) 
-	@PostMapping("/list")
-	String list(Model model, Shop shop) {
-		
-		//System.out.println(shop.getCity());
-		
-		List<Shop> list = shopservice.list(shop);
-		
-		model.addAttribute("list", list);
-		
-		return path + "list";
-	}
+	@Autowired
+	ShopService shopService;
 	
 	//매장 상세정보
-	@GetMapping("/item/{shopNo}")
+	@GetMapping("/{shopNo}")
 	String item(@PathVariable int shopNo, Model model) {
-		Shop item = shopservice.item(shopNo);
+		Shop item = shopService.item(shopNo);
 		
 		model.addAttribute("info", item);
 		
-		return path + "list";
+		return "shop/list";
 	}
-
+	
+	//예약 추가
+	@PostMapping("/add")
+     String add(Booking item) {
+		bookingservice.add(item);
+		
+		return "booking/confirm";
+	}
+	
 }

@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Pager {
 	
-	private int page = 1; //페이지 값, 값을 아무것도 안 가져왔을 때 default 값 (booklist 그냥 가져왔을때) 
+	private int page = 1; 
 	private int perPage = 10;
 	private float total;
 	private int perGroup = 3;
@@ -49,15 +49,15 @@ public class Pager {
 	}
 	
 	public int getLast() {
-		return (int) Math.ceil(total / perPage); //ceil로 올림, ceil값은 실수라서 int로 casting
+		return (int) Math.ceil(total / perPage); 
 	}
 	
 	public int getPrev() {
-		return  page <= perGroup ? 1 : (((page - 1) / perGroup) - 1 ) * perGroup + 1; //현재 속해 있는 그룹 이전 그룹의 1번째 페이지 값
+		return  page <= perGroup ? 1 : (((page - 1) / perGroup) - 1 ) * perGroup + 1; 
 	}
 	
 	public int getNext() {
-		int next = (((page - 1) / perGroup) + 1 ) * perGroup + 1; //현재 속해 있는 그룹 다음 그룹의 1번째 페이지 값
+		int next = (((page - 1) / perGroup) + 1 ) * perGroup + 1; 
 		int last = getLast();
 		
 		return  next < last ? next :last;
@@ -66,7 +66,7 @@ public class Pager {
 	public List<Integer> getList() {
 		List<Integer> list = new ArrayList<Integer>();
 		
-		int startPage = (((page - 1) / perGroup) + 0 ) * perGroup + 1; //현재 속해 있는 그룹의 1번째 페이지 값
+		int startPage = (((page - 1) / perGroup) + 0 ) * perGroup + 1; 
 		
 		for (int i = startPage; i < (startPage + perGroup) && i <= getLast(); i++ )
 			list.add(i);

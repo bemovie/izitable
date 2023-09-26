@@ -20,8 +20,8 @@ public class ShopServiceImpl implements ShopService {
 	}
 
 	@Override
-	public Shop item(int shopCode) {
-		return dao.list(shopCode);
+	public Shop item(int shopNo) {
+		return dao.list(shopNo);
 	}
 	
 }
