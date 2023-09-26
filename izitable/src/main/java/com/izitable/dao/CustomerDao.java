@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.izitable.model.Customer;
 import com.izitable.model.Pager;
+import com.izitable.model.Reservation;
 
 public interface CustomerDao {
 

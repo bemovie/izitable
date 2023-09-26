@@ -1,6 +1,7 @@
 package com.izitable.model;
 
 import java.util.Date;
+import java.sql.Timestamp;
 
 public class Reservation {
 		
@@ -8,8 +9,17 @@ public class Reservation {
 	private int custCode;
 	private int shopCode;
 	private Date resDate;
-	private Date resTime;
+	private String resTime;
 	private int resNop;
+	
+	private String shopName;
+	
+	public String getShopName() {
+		return shopName;
+	}
+	public void setShopName(String shopName) {
+		this.shopName = shopName;
+	}
 	
 	public int getResCode() {
 		return resCode;
@@ -35,10 +45,10 @@ public class Reservation {
 	public void setResDate(Date resDate) {
 		this.resDate = resDate;
 	}
-	public Date getResTime() {
+	public String getResTime() {
 		return resTime;
 	}
-	public void setResTime(Date resTime) {
+	public void setResTime(String resTime) {
 		this.resTime = resTime;
 	}
 	public int getResNop() {

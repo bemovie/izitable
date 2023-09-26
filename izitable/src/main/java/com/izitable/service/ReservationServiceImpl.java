@@ -14,15 +14,6 @@ public class ReservationServiceImpl implements ReservationService {
 
 	@Autowired
 	ReservationDao dao;
-	
-	
-	
-	@Override
-	public List<Reservation> list(Pager pager) {
-		int total = dao.total(pager); 
-		pager.setTotal(total);
-		return dao.list(pager) ;
-	}
 
 	@Override
 	public void add(Reservation item) {
@@ -30,27 +21,13 @@ public class ReservationServiceImpl implements ReservationService {
 	}
 
 	@Override
-	public void update(Reservation item) {
-        dao.update(item);		
+	public List<Reservation> custResList(int custCode) {
+		return dao.custResList(custCode);
 	}
 
 	@Override
-	public void delete(int resCode) {
-		dao.delete(resCode);		
+	public void delCustResList(int resCode) {
+		dao.delCustResList(resCode);
 	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 }

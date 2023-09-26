@@ -4,7 +4,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <html>
 <head>
-	<title>Home</title>
+
+<jsp:include page="../nav.jsp"></jsp:include>
+
 </head>
 <body>
 	<div class="container">

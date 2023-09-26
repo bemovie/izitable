@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.izitable.model.Customer;
 import com.izitable.model.Pager;
+import com.izitable.model.Reservation;
 
 @Repository
 public class CustomerDaoImpl implements CustomerDao {
@@ -44,5 +45,7 @@ public class CustomerDaoImpl implements CustomerDao {
 	public Customer login(Customer item) {
 		return sql.selectOne("customer.login", item);
 	}
+
+	
 
 }

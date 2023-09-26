@@ -12,15 +12,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.izitable.model.Customer;
 import com.izitable.model.Pager;
+import com.izitable.model.Reservation;
 import com.izitable.service.CustomerService;
+import com.izitable.service.ReservationService;
 
 @Controller
-@RequestMapping("/customer")
+@RequestMapping("/cust")
 public class CustomerController {
 	final String path = "customer/";
 	
 	@Autowired
 	CustomerService service;
+	
+	@Autowired
+	ReservationService reservationService;
 	
 	@GetMapping("/list")
 	String list(Model model, Pager pager) {
@@ -59,7 +64,22 @@ public class CustomerController {
 		return "redirect:../list";
 	}
 	
+	@GetMapping("/res/{custCode}")
+	String resList(@PathVariable int custCode, Model model) {
+		
+		List<Reservation> list = reservationService.custResList(custCode);
+		
+		model.addAttribute("list", list);
+		
+		return path + "resList";
+	}
 	
-	
-	
+	@GetMapping("/res/delete/{resCode}")
+	String delCustResList(@PathVariable int resCode, Model model) {
+		
+		reservationService.delCustResList(resCode);
+		
+		return "redirect:../../{custCode}";
+	}
+
 }

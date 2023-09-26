@@ -23,8 +23,8 @@
 	</delete>
 	
 	<insert id="add">
-		INSERT INTO tbl_cust
-		VALUES ( #{custCode}, #{custPhone}, #{custPassword}, #{custName} )
+		INSERT INTO tbl_cust (cust_phone, cust_password, cust_name, cust_reg_date)
+		VALUES ( #{custPhone}, #{custPassword}, #{custName}, SYSDATE() )
 	</insert>
 	
 	<select id="login" resultType="Customer">

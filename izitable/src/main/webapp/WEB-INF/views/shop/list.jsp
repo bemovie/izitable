@@ -196,7 +196,8 @@ for (var i = 0; i < positions.length; i ++) {
     	document.getElementById('sn').innerHTML = `${item.shopName}`;
     	document.getElementById('sa').innerHTML = `${item.shopAddress}`;
     	document.getElementById('sp').innerHTML = `${item.shopPhone}`;
-    	document.getElementById('res').innerHTML = `<a href="${pageContext.request.contextPath}/res/${item.shopCode}">예약하기</a>`;
+    	//document.getElementById('res').innerHTML = `<a href="${pageContext.request.contextPath}/res/add/${item.shopCode}">예약하기</a>`;
+    	document.getElementById('sc').value = `${item.shopCode}`;
 
     	alert("매장번호" + ${item.shopCode});
     });
@@ -222,13 +223,15 @@ for (var i = 0; i < positions.length; i ++) {
 		<div id="sp">
 		</div>
 		
-		<form>
+		<form action="/res/add" method="post">
+		<input type="number" id="sc" name="shopCode" hidden="hidden">
+		<input type="number" name="custCode" hidden="hidden" value="${sessionScope.customer.custCode}">
 		<div class="accordion border-0 accordion-s" id="accordion-group-6">
 
                     <div class="accordion-item">
                         <button class="accordion-button collapsed px-0" type="button" data-bs-toggle="collapse" data-bs-target="#accordion6-1">
                             <!-- <span class="font-600 font-13">예약 날짜 선택</span> -->
-                            <input class="font-600 font-13 datepicker" value="예약 날짜 선택">
+                            <input class="font-600 font-13 datepicker" name="resDate" value="예약 날짜 선택">
                             <i class="bi bi-chevron-down font-20"></i>
                         </button>
                         <div id="accordion6-1" class="accordion-collapse collapse" data-bs-parent="#accordion-group-6">
@@ -247,33 +250,33 @@ for (var i = 0; i < positions.length; i ++) {
 
                     <div class="accordion-item">
                         <button class="accordion-button collapsed px-0" type="button" data-bs-toggle="collapse" data-bs-target="#accordion6-2">
-                            <input id="resHour" class="font-600 font-13" value="예약 시간 선택">
+                            <input type="text" id="resTime" class="font-600 font-13" name="resTime" value="예약 시간 선택">
                             <i class="bi bi-chevron-down font-20"></i>
                         </button>
                         <div id="accordion6-2" class="accordion-collapse collapse" data-bs-parent="#accordion-group-6">
                         	<script>
-                        	function resHour( item ) {
-                        		document.querySelector('#resHour').value = $(item).text();
+                        	function resTime( item ) {
+                        		document.querySelector('#resTime').value = $(item).text();
                         	}
                         	</script>
                         
                             <div class="mb-2 pb-2"></div>
-                                <a href="#" class="btn btn-xxs gradient-orange" style="width:100px; margin: 0 auto;" onclick="resHour(this)">11:00</a>
-                                <a href="#" class="btn btn-xxs gradient-orange" style="width:100px; margin: 0 auto;" onclick="resHour(this)">12:00</a>
-                                <a href="#" class="btn btn-xxs gradient-orange" style="width:100px; margin: 0 auto;" onclick="resHour(this)">13:00</a>
-                                <a href="#" class="btn btn-xxs gradient-orange" style="width:100px; margin: 0 auto;" onclick="resHour(this)">14:00</a>
-                                <a href="#" class="btn btn-xxs gradient-orange" style="width:100px; margin: 0 auto;" onclick="resHour(this)">17:00</a>
-                                <a href="#" class="btn btn-xxs gradient-orange" style="width:100px; margin: 0 auto;" onclick="resHour(this)">18:00</a>
-                                <a href="#" class="btn btn-xxs gradient-orange" style="width:100px; margin: 0 auto;" onclick="resHour(this)">19:00</a>
-                                <a href="#" class="btn btn-xxs gradient-orange" style="width:100px; margin: 0 auto;" onclick="resHour(this)">20:00</a>
-                                <a href="#" class="btn btn-xxs gradient-orange" style="width:100px; margin: 0 auto;" onclick="resHour(this)">21:00</a>
+                                <a href="#" class="btn btn-xxs gradient-orange" style="width:100px; margin: 0 auto;" onclick="resTime(this)">11:00</a>
+                                <a href="#" class="btn btn-xxs gradient-orange" style="width:100px; margin: 0 auto;" onclick="resTime(this)">12:00</a>
+                                <a href="#" class="btn btn-xxs gradient-orange" style="width:100px; margin: 0 auto;" onclick="resTime(this)">13:00</a>
+                                <a href="#" class="btn btn-xxs gradient-orange" style="width:100px; margin: 0 auto;" onclick="resTime(this)">14:00</a>
+                                <a href="#" class="btn btn-xxs gradient-orange" style="width:100px; margin: 0 auto;" onclick="resTime(this)">17:00</a>
+                                <a href="#" class="btn btn-xxs gradient-orange" style="width:100px; margin: 0 auto;" onclick="resTime(this)">18:00</a>
+                                <a href="#" class="btn btn-xxs gradient-orange" style="width:100px; margin: 0 auto;" onclick="resTime(this)">19:00</a>
+                                <a href="#" class="btn btn-xxs gradient-orange" style="width:100px; margin: 0 auto;" onclick="resTime(this)">20:00</a>
+                                <a href="#" class="btn btn-xxs gradient-orange" style="width:100px; margin: 0 auto;" onclick="resTime(this)">21:00</a>
                             <div class="mb-2"></div> 
                         </div>
                     </div>
 
                     <div class="accordion-item">
                         <button class="accordion-button collapsed px-0" type="button" data-bs-toggle="collapse" data-bs-target="#accordion6-3">
-                            <input id="tit_nop" class="font-600 font-13" value="예약 인원 선택">
+                            <input type="number" id="tit_nop" name="resNop" class="font-600 font-13" value="예약 인원 선택">
                             <i class="bi bi-chevron-down font-20"></i>
                         </button>
                         <div id="accordion6-3" class="accordion-collapse collapse" data-bs-parent="#accordion-group-6">
@@ -326,7 +329,7 @@ for (var i = 0; i < positions.length; i ++) {
                 </div>
 		
 		<div>
-			<button type="submit" id="res"></button>
+			<button type="submit" id="res">예약하기</button>
 		</div>
 		</form>
 		

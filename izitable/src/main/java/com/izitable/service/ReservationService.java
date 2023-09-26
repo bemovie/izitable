@@ -7,14 +7,10 @@ import com.izitable.model.Reservation;
 
 public interface ReservationService {
 
-	List<Reservation> list(Pager pager);
-
 	void add(Reservation item);
 
-	void update(Reservation item);
+	List<Reservation> custResList(int custCode);
 
-	void delete(int resCode);
-
-
+	void delCustResList(int resCode);
 
 }
