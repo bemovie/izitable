@@ -18,32 +18,32 @@ public class UserDaoImpl implements UserDao {
 	
 	@Override
 	public List<User> list(Pager pager) {
-		return sql.selectList("customer.list", pager);
+		return sql.selectList("user.list", pager);
 	}
 
 	@Override
 	public int total(Pager pager) {
-		return sql.selectOne("customer.total", pager);
+		return sql.selectOne("user.total", pager);
 	}
 
 	@Override
 	public void update(User item) {
-		sql.update("customer.update", item);
+		sql.update("user.update", item);
 	}
 
 	@Override
-	public void delete(int custCode) {
-		sql.delete("customer.delete", custCode);
+	public void delete(int userNo) {
+		sql.delete("user.delete", userNo);
 	}
 
 	@Override
 	public void add(User item) {
-		sql.insert("customer.add", item);
+		sql.insert("user.add", item);
 	}
 
 	@Override
 	public User login(User item) {
-		return sql.selectOne("customer.login", item);
+		return sql.selectOne("user.login", item);
 	}
 
 	

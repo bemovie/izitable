@@ -1,9 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="shop"> 
+<mapper namespace="shop">
+
+	<resultMap type="Shop" id="ShopMap">
+		<id column="no" property="shopNo"/>
+		<result column="email" property="shopEmail"/>
+		<result column="pwd" property="shopPwd"/>
+		<result column="comp_name" property="compName"/>
+		<result column="comp_num" property="compNum"/>
+		<result column="comp_ceo" property="compCeo"/>
+		<result column="comp_call" property="compCall"/>
+		<result column="comp_addr1" property="compAddr1"/>				
+		<result column="comp_addr2" property="compAddr2"/>				
+		<result column="comp_intro" property="compIntro"/>				
+		<result column="category_no" property="categoryNo"/>				
+		<result column="latitude" property="latitude"/>				
+		<result column="longitude" property="longitude"/>
+	</resultMap>
 	
-	<select id="list" resultType="Shop">
+	<select id="list" resultMap="ShopMap">
 		SELECT * FROM tbl_shop
 		WHERE comp_addr1 LIKE CONCAT('%', #{si}, '%')
 			AND comp_addr1 LIKE CONCAT('%', #{gu}, '%')
@@ -11,7 +27,7 @@
 			AND category_no = #{categoryNo}
 	</select>
 
-	<select id="item" resultType="Shop">
+	<select id="item" resultMap="ShopMap">
  		SELECT * FROM tbl_shop
  		WHERE no = #{shopNo}
  	</select>

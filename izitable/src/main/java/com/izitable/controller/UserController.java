@@ -75,6 +75,8 @@ public class UserController {
 		
 		model.addAttribute("list", list);
 		
+		model.addAttribute("userNo", userNo);
+		
 		return path + "bookingList";
 	}
 	
@@ -85,6 +87,7 @@ public class UserController {
 		bookingService.delUserBooking(bookingId);
 		
 		return path + "bookingList";
+		//return "redirect:.";
 	}
 
 }

@@ -5,7 +5,7 @@
 <html>
 <head>
 
-<jsp:include page="../header.jsp"></jsp:include>
+<%-- <jsp:include page="../header.jsp"></jsp:include> --%>
 
 <link rel="stylesheet" type="text/css" href="../../../resources/css/modal.css">
 

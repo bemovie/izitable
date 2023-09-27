@@ -1,14 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="booking"> 
+<mapper namespace="booking">
+
+	<resultMap type="Booking" id="BookingMap">
+		<id column="id" property="bookingId"/>
+		<result column="user_no" property="userNo"/>
+		<result column="shop_no" property="shopNo"/>
+		<result column="date" property="bookingDate"/>
+		<result column="time" property="bookingTime"/>
+		<result column="mem_num" property="bookingMemNum"/>
+	</resultMap> 
 	
 	<insert id="add">
 		INSERT INTO tbl_booking_user (user_no, shop_no, date, time, mem_num)
 		VALUES ( #{userNo}, #{shopNo}, #{bookingDate}, #{bookingTime}, #{bookingMemNum} )
 	</insert>
 	
-	<select id="userBookingList" resultType="Booking">
+	<select id="userBookingList" resultMap="BookingMap">
 		SELECT tbl_booking_user.*, tbl_shop.* FROM tbl_booking_user JOIN tbl_shop ON tbl_booking_user.shop_no = tbl_shop.no
 		WHERE tbl_booking_user.user_no = #{userNo}
 	</select>
