@@ -5,7 +5,6 @@
 <html>
 <head>
 
-
 <!-- 문교수님 CSS -->
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -32,8 +31,10 @@
 
 <jsp:include page="../nav.jsp"></jsp:include>
 
+<title>IZITABLE - 이지테이블</title>
+
 </head>
-<body>
+<body style="text-align: center;">
 		
 <form method="post" action="/shop/list" style="margin: 10px;">
 <select id="si" name="si">
@@ -56,7 +57,7 @@
 <button type="submit" class="btn">적용</button>
 </form>
 
-<div id="map" style="width:500px;height:400px;"></div>
+<div id="map" style="width:500px;height:400px;margin: 0 auto;"></div>
 
 <!-- 카카오 지도 생성 -->
 <script src="../../../resources/js/kakaomap/map.js"></script>

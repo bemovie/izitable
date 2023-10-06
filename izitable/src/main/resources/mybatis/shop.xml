@@ -14,7 +14,7 @@
 		<result column="comp_addr1" property="compAddr1"/>				
 		<result column="comp_addr2" property="compAddr2"/>				
 		<result column="comp_intro" property="compIntro"/>				
-		<result column="category_no" property="categoryNo"/>				
+		<result column="shop_category_no" property="categoryNo"/>				
 		<result column="latitude" property="latitude"/>				
 		<result column="longitude" property="longitude"/>
 	</resultMap>
@@ -28,7 +28,7 @@
 		WHERE comp_addr1 LIKE CONCAT('%', #{si}, '%')
 			AND comp_addr1 LIKE CONCAT('%', #{gu}, '%')
 			AND comp_addr1 LIKE CONCAT('%', #{dong}, '%')
-			AND category_no = #{categoryNo}
+			AND shop_category_no = #{categoryNo}
 	</select>
 
 	<select id="item" resultMap="ShopMap">

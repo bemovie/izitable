@@ -5,23 +5,36 @@
 <html>
 <head>
 
+<!-- 문교수님 CSS -->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover" />
+<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet"> -->
+
+<!-- BBS Style -->
+<link href="/asset/BBSTMP_0000000000001/style.css" rel="stylesheet" />
+<!-- 공통 Style -->
+<link href="/asset/LYTTMP_0000000000000/style.css" rel="stylesheet" />
+<!-- 문교수님 CSS -->
+
 <jsp:include page="../nav.jsp"></jsp:include>
 
 </head>
 <body>
-	<div class="container">
+<div id="content">
+<div class="container">
+<div id="contents">
+<div id="bbs_wrap">	
 	
-		<div>
-			<a href="/shop/booking/${sessionScope.shop.shopNo}"><h3>예약 관리</h3></a>
-		</div>
+	<div style="/*border: 2px solid black;*/ text-align: center;">
 		
-		<div>
-			<a href="/shop/setting/${sessionScope.shop.shopNo}"><h3>매장 설정</h3></a>
-		</div>
-		
-		<div>
-			<a href="/shop/update/${sessionScope.shop.shopNo}"><h3>정보 변경</h3></a>
-		</div>
+			<button class="btn" style="margin-right: 30px;"><a href="/shop/booking/${sessionScope.shop.shopNo}"><h3>예약 관리</h3></a></button>
+			<button class="btn" style="margin-right: 30px;"><a href="/shop/setting/${sessionScope.shop.shopNo}"><h3>매장 설정</h3></a></button>
+			<button class="btn"><a href="/shop/update/${sessionScope.shop.shopNo}"><h3>정보 변경</h3></a></button>
+
+	</div>
 		
 		<div>
 			총 예약 수 <fmt:formatNumber value="${pager.total}" pattern="#"></fmt:formatNumber> 건
@@ -71,5 +84,8 @@
 			</table>
 		</div>
 	</div>
+</div>
+</div>
+</div>
 </body>
 </html>
