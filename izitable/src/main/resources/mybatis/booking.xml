@@ -4,12 +4,15 @@
 <mapper namespace="booking">
 
 	<resultMap type="Booking" id="BookingMap">
-		<id column="id" property="bookingId"/>
+		<id column="no" property="bookingNo"/>
 		<result column="user_no" property="userNo"/>
 		<result column="shop_no" property="shopNo"/>
 		<result column="date" property="bookingDate"/>
 		<result column="time" property="bookingTime"/>
 		<result column="mem_num" property="bookingMemNum"/>
+		
+		<result column="email" property="userEmail"/>
+		<result column="phone" property="userPhone"/>
 	</resultMap> 
 	
 	<insert id="add">
@@ -22,9 +25,26 @@
 		WHERE tbl_booking_user.user_no = #{userNo}
 	</select>
 	
-	<select id="delUserBooking">
+	<select id="userBookingDelete">
 		DELETE FROM tbl_booking_user
-		WHERE id = #{bookingId}
+		WHERE no = #{bookingNo}
+	</select>
+	
+	<select id="shopBookingList" resultMap="BookingMap">
+		SELECT tbl_booking_user.*, tbl_user.* 
+		FROM tbl_booking_user JOIN tbl_user ON tbl_booking_user.user_no = tbl_user.no
+		WHERE tbl_booking_user.shop_no = #{shopNo}
+	</select>
+	
+	<select id="shopBookingUpdate">
+		UPDATE tbl_booking_user
+		SET date = #{bookingDate}, time = #{bookingTime}, mem_num = #{bookingMemNum}
+		WHERE no = #{bookingNo}
+	</select>
+	
+	<select id="shopBookingDelete">
+		DELETE FROM tbl_booking_user
+		WHERE no = #{bookingNo}
 	</select>
 	
 </mapper>

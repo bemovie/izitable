@@ -27,49 +27,29 @@ public class UserController {
 	@Autowired
 	BookingService bookingService;
 	
-	//회원 목록
-	@GetMapping("/list")
-	String list(Model model, Pager pager) {
-		List<User> list = userService.list(pager);
+	//회원 정보 변경
+	@GetMapping("/update/{userNo}")
+	String update(@PathVariable int userNo, Model model) {
 		
-		model.addAttribute("list", list);
+		User item = userService.item(userNo);
 		
-		return path + "list";
-	}
-	
-	//회원 추가
-	@GetMapping("/add")
-	String add() {
-		return path + "add";
-	}
-	
-	@PostMapping("/add")
-	String add(User item) {
-		userService.add(item);
-		return "redirect:list";
+		model.addAttribute("item", item);
+		
+		return path + "userUpdate";
 	}
 	
 	//회원 정보 변경
 	@PostMapping("/update/{userNo}")
-	String update(@PathVariable int userNo, User item) {
-		item.setUserNo(userNo);
+	String update(User item) {
 		
 		userService.update(item);
 		
-		return "redirect:../list";
-	}
-	
-	//회원 삭제
-	@GetMapping("/delete/{userNo}")
-	String delete(@PathVariable int userNo) {
-		userService.delete(userNo);
-		
-		return "redirect:../list";
+		return "redirect:./{userNo}";
 	}
 	
 	//회원 페이지 예약 목록
 	@GetMapping("/booking/{userNo}")
-	String resList(@PathVariable int userNo, Model model) {
+	String userBookingList(@PathVariable int userNo, Model model) {
 		
 		List<Booking> list = bookingService.userBookingList(userNo);
 		
@@ -77,17 +57,17 @@ public class UserController {
 		
 		model.addAttribute("userNo", userNo);
 		
-		return path + "bookingList";
+		return path + "userBookingList";
 	}
 	
 	//회원 페이지 예약 삭제
-	@GetMapping("/booking/delete/{bookingId}")
-	String delCustResList(@PathVariable int bookingId, Model model) {
+	@GetMapping("/booking/{userNo}/delete/{bookingNo}")
+	String userBookingDelete(@PathVariable int userNo, @PathVariable int bookingNo, Model model) {
 		
-		bookingService.delUserBooking(bookingId);
+		bookingService.userBookingDelete(bookingNo);
 		
-		return path + "bookingList";
-		//return "redirect:.";
+		//return path + "bookingList";
+		return "redirect:../";
 	}
 
 }

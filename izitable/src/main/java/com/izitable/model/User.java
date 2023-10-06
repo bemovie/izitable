@@ -7,6 +7,15 @@ public class User {
 	private String userPhone;		//회원 전화번호
 	private String userPhoneCert;	//회원 전화번호 인증여부
 	
+	private String loginType;		//로그인 타입
+	
+	public String getLoginType() {
+		return loginType;
+	}
+	public void setLoginType(String loginType) {
+		this.loginType = loginType;
+	}
+	
 	public int getUserNo() {
 		return userNo;
 	}

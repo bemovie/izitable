@@ -10,6 +10,12 @@ public interface BookingService {
 
 	List<Booking> userBookingList(int userNo);
 
-	void delUserBooking(int bookingId);
+	void userBookingDelete(int bookingNo);
+
+	List<Booking> shopBookingList(int shopNo);
+
+	void shopBookingUpdate(int shopNo);
+
+	void shopBookingDelete(int shopNo);
 
 }

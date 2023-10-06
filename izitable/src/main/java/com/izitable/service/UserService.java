@@ -15,6 +15,8 @@ public interface UserService {
 
 	void add(User item);
 
-	Boolean login(User item);
+	Boolean login(User user);
+
+	User item(int userNo);
 
 }

@@ -32,7 +32,7 @@ public class BookingController {
 		
 		model.addAttribute("info", item);
 		
-		return "shop/list";
+		return "shop/shopList";
 	}
 	
 	//예약 추가

@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Booking {
 	
-	private int bookingId;		//예약 번호
+	private int bookingNo;		//예약 번호
 	private int userNo;			//회원 번호
 	private int shopNo;			//매장 번호
 	private Date bookingDate;	//예약 날짜
@@ -12,13 +12,32 @@ public class Booking {
 	private int bookingMemNum;	//예약 인원
 	
 	private String compName;	//매장 이름
+	
+	private String userEmail;	//회원 이메일
+	private String userPhone;	//회원 연락처
 
-	public int getBookingId() {
-		return bookingId;
+	public String getUserEmail() {
+		return userEmail;
 	}
 
-	public void setBookingId(int bookingId) {
-		this.bookingId = bookingId;
+	public void setUserEmail(String userEmail) {
+		this.userEmail = userEmail;
+	}
+
+	public String getUserPhone() {
+		return userPhone;
+	}
+
+	public void setUserPhone(String userPhone) {
+		this.userPhone = userPhone;
+	}
+
+	public int getBookingNo() {
+		return bookingNo;
+	}
+
+	public void setBookingNo(int bookingNo) {
+		this.bookingNo = bookingNo;
 	}
 
 	public int getUserNo() {

@@ -11,12 +11,17 @@
 		<result column="phone_cert" property="userPhoneCert"/>				
 	</resultMap>
 	
-	<select id="list" resultType="User">
+	<select id="list" resultMap="UserMap">
 		SELECT * FROM tbl_user
 	</select>
 	
 	<select id="total" resultType="Integer">
 		SELECT COUNT(*) FROM tbl_user
+	</select>
+	
+	<select id="item" resultMap="UserMap">
+		SELECT * FROM tbl_user
+		WHERE no = #{userNo}
 	</select>
 	
 	<update id="update">

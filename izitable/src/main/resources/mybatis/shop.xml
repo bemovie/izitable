@@ -19,6 +19,10 @@
 		<result column="longitude" property="longitude"/>
 	</resultMap>
 	
+	<select id="list_admin" resultMap="ShopMap">
+		SELECT * FROM tbl_shop
+	</select>
+	
 	<select id="list" resultMap="ShopMap">
 		SELECT * FROM tbl_shop
 		WHERE comp_addr1 LIKE CONCAT('%', #{si}, '%')
@@ -31,5 +35,16 @@
  		SELECT * FROM tbl_shop
  		WHERE no = #{shopNo}
  	</select>
+ 	
+ 	<select id="login" resultMap="ShopMap">
+		SELECT * FROM tbl_shop
+		WHERE email = #{shopEmail} AND pwd = #{shopPwd}
+	</select>
+	
+	<update id="update">
+		UPDATE tbl_shop
+		SET email = #{shopEmail}, comp_name = #{compName}, comp_num = #{compNum}, comp_ceo = #{compCeo}, comp_call = #{compCall}, comp_addr1 = #{compAddr1}, comp_addr2 = #{compAddr2}, comp_intro = #{compIntro} 
+		WHERE no = #{shopNo}
+	</update>
 	
 </mapper>

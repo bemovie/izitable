@@ -19,6 +19,15 @@ public class Shop {
 	private String gu;			//구
 	private String dong;		//동
 	
+	private String loginType;	//로그인 타입
+	
+	public String getLoginType() {
+		return loginType;
+	}
+	public void setLoginType(String loginType) {
+		this.loginType = loginType;
+	}
+	
 	public String getSi() {
 		return si;
 	}

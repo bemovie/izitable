@@ -26,8 +26,23 @@ public class BookingServiceImpl implements BookingService {
 	}
 
 	@Override
-	public void delUserBooking(int bookingId) {
-		dao.delUserBooking(bookingId);
+	public void userBookingDelete(int bookingNo) {
+		dao.userBookingDelete(bookingNo);
+	}
+
+	@Override
+	public List<Booking> shopBookingList(int shopNo) {
+		return dao.shopBookingList(shopNo);
+	}
+
+	@Override
+	public void shopBookingUpdate(int shopNo) {
+		dao.shopBookingUpdate(shopNo);
+	}
+
+	@Override
+	public void shopBookingDelete(int shopNo) {
+		dao.shopBookingDelete(shopNo);
 	}
 
 }

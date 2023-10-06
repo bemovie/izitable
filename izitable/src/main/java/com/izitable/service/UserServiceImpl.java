@@ -44,16 +44,21 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public Boolean login(User item) {
-		User result = dao.login(item);
+	public Boolean login(User user) {
+		User result = dao.login(user);
 		
 		if (result != null) {
-			BeanUtils.copyProperties(result, item);
-			item.setUserPwd(null);
+			BeanUtils.copyProperties(result, user);
+			user.setUserPwd(null);
 			
 			return true;
 		}
 		return false;	
+	}
+
+	@Override
+	public User item(int userNo) {
+		return dao.item(userNo);
 	}
 
 }

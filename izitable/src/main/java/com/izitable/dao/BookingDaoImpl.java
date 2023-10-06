@@ -26,8 +26,23 @@ public class BookingDaoImpl implements BookingDao {
 	}
 
 	@Override
-	public void delUserBooking(int bookingId) {
-		sql.delete("booking.delUserBooking", bookingId);
+	public void userBookingDelete(int bookingNo) {
+		sql.delete("booking.userBookingDelete", bookingNo);
+	}
+
+	@Override
+	public List<Booking> shopBookingList(int shopNo) {
+		return sql.selectList("booking.shopBookingList", shopNo);
+	}
+
+	@Override
+	public void shopBookingUpdate(int shopNo) {
+		sql.update("booking.shopBookingUpdate", shopNo);
+	}
+
+	@Override
+	public void shopBookingDelete(int shopNo) {
+		sql.delete("booking.userBookingDelete", shopNo);
 	}
 
 }

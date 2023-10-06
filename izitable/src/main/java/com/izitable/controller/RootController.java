@@ -7,7 +7,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import com.izitable.model.Shop;
 import com.izitable.model.User;
+import com.izitable.service.ShopService;
 import com.izitable.service.UserService;
 
 @Controller
@@ -15,6 +18,9 @@ public class RootController {
 	
 	@Autowired
 	UserService userService;
+	
+	@Autowired
+	ShopService shopService;
 	
 	//메인 페이지
 	@GetMapping("/")
@@ -26,7 +32,7 @@ public class RootController {
 			session.removeAttribute("msg");
 		}
 		
-		return "shop/list";
+		return "shop/shopList";
 	}
 	
 	//로그인
@@ -36,17 +42,33 @@ public class RootController {
 	}
 	
 	@PostMapping("/login")
-	String login(User item, HttpSession session) {
-		Boolean result = userService.login(item); //return값을 true, false로 받기 위해 Boolean으로 result 받음
-		
-		if(result) { //result가 true면 로그인 되었다 => session에 사용자 정보를 저장			
-			session.setAttribute("msg", "환영합니다");
-			session.setAttribute("user", item); //result가 Boolean 타입이므로, item을 받아야 Customer 정보가 담아짐,
+	String login(User user, Shop shop, HttpSession session) {
+		//매장 로그인
+		if (shop.getShopEmail() != null) {
+			
+			Boolean result = shopService.login(shop); //return값을 true, false로 받기 위해 Boolean으로 result 받음
+			
+			if(result) { //result가 true면 로그인 되었다 => session에 사용자 정보를 저장			
+				session.setAttribute("msg", "환영합니다");
+				session.setAttribute("shop", shop); //result가 Boolean 타입이므로, item을 받아야 Customer 정보가 담아짐,
+			}
+			
 		}
-		
+		//일반 로그인
 		else {
-			session.setAttribute("msg", "로그인에 실패하였습니다");
+		
+			Boolean result = userService.login(user); //return값을 true, false로 받기 위해 Boolean으로 result 받음
+			
+			if(result) { //result가 true면 로그인 되었다 => session에 사용자 정보를 저장			
+				session.setAttribute("msg", "환영합니다");
+				session.setAttribute("user", user); //result가 Boolean 타입이므로, item을 받아야 Customer 정보가 담아짐,
+			}
+			
+			else {
+				session.setAttribute("msg", "로그인에 실패하였습니다");
+			}
 		}
+		
 		return "redirect:/";
 	}
 	

@@ -18,6 +18,8 @@ public interface UserDao {
 
 	void add(User item);
 
-	User login(User item);
+	User login(User user);
+
+	User item(int userNo);
 
 }
