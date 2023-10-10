@@ -80,14 +80,20 @@ public class RootController {
 		return "redirect:/";
 	}
 	
+	//회원가입 유형
+	@GetMapping("/joinType")
+	String joinType() {
+		return "joinType";
+	}
+	
 	//회원가입
 	@GetMapping("/join")
-	String signup() {
+	String join() {
 		return "join";
 	}
 	
 	@PostMapping("/join")
-	String signup(User item) {
+	String join(User item) {
 		userService.add(item);
 		
 		return "redirect:.";

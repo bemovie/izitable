@@ -18,6 +18,12 @@
 <link href="/asset/LYTTMP_0000000000000/style.css" rel="stylesheet" />
 <!-- 문교수님 CSS -->
 
+<style>
+join_input {
+	margin-bottom: 30px;
+}
+</style>
+
 <meta charset="UTF-8">
 
 <jsp:include page="nav.jsp"></jsp:include>
@@ -26,46 +32,52 @@
 </head>
 <body>
 
-	<div class="container">
-		<div>
+	<div class="container" style="margin: 0 auto; width: 50%; border: 2px solid black;">
+		<div style="text-align: center;">
 			<h3>회원 가입</h3>
 		</div>
 		<!-- <form method="post" action="add"> --> <!-- jsp는 페이지 단위, 어쩔 수 없이 form tag를 받아줄 페이지 필요 -->
 		<!-- <form method="post" name="signup_form"> --> <!-- jsp는 페이지 단위, 어쩔 수 없이 form tag를 받아줄 페이지 필요 -->
-		<form method="post">
+		<form method="post" >
 			<div>
 			
-				<div>
-					<label>이메일</label>
-					<input type="text" name="userEmail">
+				<div class="join_input">
+					<label>이메일</label><br>
+					<input type="text" name="userEmail" placeholder="이메일을 입력해주세요">
+					<button class="btn">이메일 인증</button>
 				</div>
 				
-				<div>
-					<label>휴대폰 번호</label>
-					<input type="text" name="userPhone">
+				<div class="join_input">
+					<label>휴대폰 번호</label><br>
+					<input type="text" name="userPhone" placeholder="숫자만 입력해주세요">
 				</div>
 				
+				<!--
 				<div>
 					<label>휴대폰 번호 인증</label>
 					<input type="hidden" name="userPhoneCert">
 				</div>
-			
-				<div>
-					<label>비밀번호</label>
-					<input type="password" name="userPwd">
-					<button type="button" class="password_check" data-msg="Hello1" data-for="passwd">확인</button>
+				-->
+				
+				<div class="join_input">
+					<label>비밀번호</label><br>
+					<input type="password" name="userPwd" placeholder="비밀번호를 입력해주세요">
+					<button type="button" class="password_check btn" data-msg="Hello1" data-for="passwd">확인</button>
 				</div>
 				
-				<div>
-					<label>비밀번호 확인</label>
-					<input type="password" name="passwd_confirm">
-					<button type="button" class="password_check" data-msg="Hello2" data-for="passwd_confirm">확인</button>
+				<div class="join_input">
+					<label>비밀번호 확인</label><br>
+					<input type="password" name="passwd_confirm" placeholder="비밀번호를 다시 한 번 입력해주세요">
+					<button type="button" class="password_check btn" data-msg="Hello2" data-for="passwd_confirm">확인</button>
 				</div>
+				
+				영문, 숫자, 특수문자 중 2종류 이상을 조합하여 8~20자리로 설정해주세요.
 	
-				<div>
-					<button type="submit" id="join">등록</button>
-					<a href="${pageContext.request.contextPath}"><button type="button">처음으로</button></a>
+				<div class="join_input">
+					<button type="submit" id="join" class="btn">등록</button>
+					<a href="${pageContext.request.contextPath}"><button type="button" class="btn">처음으로</button></a>
 				</div>
+				
 			</div>
 		</form>
 	</div>
